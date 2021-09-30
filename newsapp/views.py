@@ -37,7 +37,7 @@ def getEnglishnews(request):
     shotnews = []
     image = []
     link = []
-    for i in range(0, 5):
+    for i in range(0, 15):
         URL = "https://www.indiatoday.in/india/?page=" + str(i)
         page = requests.get(URL)
         soup = BeautifulSoup(page.content, "html.parser")
