@@ -126,9 +126,6 @@ def latestSportsnews(request):
         link1 = j.find("a")['href']
         link1 = "https://news.google.com" + link1[1:]
         link.append(link1)
-        try:
-            image.append(j.find("img", class_="tvs3Id QwxBBf")["src"])
-        except:
-            image.append("https://th.bing.com/th/id/OIP.Bog_Pg2r3w4-dm6LBjQT-gHaFu?w=230&h=180&c=7&r=0&o=5&pid=1.7")
+        image.append(j.find("img", class_="tvs3Id QwxBBf")["src"])
     x = [{'news': a, 'image': s, 'link': t} for a, s, t in zip(news, image, link)]
     return JsonResponse(x, safe=False)

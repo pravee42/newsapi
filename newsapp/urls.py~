@@ -4,7 +4,7 @@ from newsapp.trending import trending
 urlpatterns = [
     path('', views.UserInfo, name='Api DOCS'),
     path('sports',views.getSportsNews, name="getSportsNews"),
-    path('latestsports',views.latestSportsnews, name="latestSportsnews"),
+    path('sports',views.getSportsNews, name="getSportsNews"),
     path('news', views.getEnglishnews, name='getEnglishnews'),
     path('tech', views.getTechnews, name='getTechnews - Abipravi'),
     #path('trending', trending, name='trending'),
