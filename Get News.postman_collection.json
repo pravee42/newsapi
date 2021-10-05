@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "9f2a212d-1db9-481f-b1ba-c88a05f636bf",
+		"name": "Get News",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://newsapi-abipravi.herokuapp.com/news",
+					"protocol": "http",
+					"host": [
+						"newsapi-abipravi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"news"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tech News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://newsapi-abipravi.herokuapp.com/tech",
+					"protocol": "http",
+					"host": [
+						"newsapi-abipravi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"tech"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Business News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://newsapi-abipravi.herokuapp.com/business",
+					"protocol": "http",
+					"host": [
+						"newsapi-abipravi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"business"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Economy News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://newsapi-abipravi.herokuapp.com/business/economy",
+					"protocol": "http",
+					"host": [
+						"newsapi-abipravi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"business",
+						"economy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Share Market News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://newsapi-abipravi.herokuapp.com/business/market",
+					"protocol": "http",
+					"host": [
+						"newsapi-abipravi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"business",
+						"market"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Entrepreneurship News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://newsapi-abipravi.herokuapp.com/business/entrepreneurship",
+					"protocol": "http",
+					"host": [
+						"newsapi-abipravi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"business",
+						"entrepreneurship"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get sports News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://newsapi-abipravi.herokuapp.com/sports",
+					"protocol": "http",
+					"host": [
+						"newsapi-abipravi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"sports"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Trending Sports News",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://newsapi-abipravi.herokuapp.com/sports/latest",
+					"protocol": "http",
+					"host": [
+						"newsapi-abipravi",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"sports",
+						"latest"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

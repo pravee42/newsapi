@@ -13,5 +13,4 @@ urlpatterns = [
     path('business/market', businessnews.business_market, name='businessmarket'),
     path('business/entrepreneurship', businessnews.entrepreneurship, name='entrepreneurship'),
     path('search/<str:pk>', views.seachquery, name='seachquery'),
-    #path('trending', trending, name='trending'),
 ]
