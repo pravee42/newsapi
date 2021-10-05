@@ -90,3 +90,33 @@ def _news(request):
 
     x = [{'news': a, 'image': s, 'link': t} for a, s, t in zip(news, image, link)]
     return JsonResponse(x, safe=False)
+
+@api_view(['GET'])
+def campus_news(request):
+    news = []
+    link = []
+    image = []
+
+    for i in range(1,10):
+        URL ="https://www.ndtv.com/education/campus-news?page=" + str(i)
+        page = requests.get(URL)
+        soup = BeautifulSoup(page.content, "html.parser")
+        results = soup.find("div", class_="articles")
+        elements = results.find_all("article")
+
+        for j in elements:
+            try:
+                news.append(j.find("a").text)
+                link1 = j.find("a")['href']
+                link1 = "https://www.ndtv.com/" + link1[1:]
+                link.append(link1)
+            except:
+                pass
+            try:
+                image.append(j.find("img", class_="lazy")["src"])
+            except:
+                image.append("https://th.bing.com/th/id/OIP.Bog_Pg2r3w4-dm6LBjQT-gHaFu?w=230&h=180&c=7&r=0&o=5&pid=1.7")
+
+
+        x = [{'news': a, 'image': s, 'link': t} for a, s, t in zip(news, image, link)]
+        return JsonResponse(x, safe=False)

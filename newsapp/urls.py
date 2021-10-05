@@ -17,4 +17,5 @@ urlpatterns = [
     path('education', education._news, name='news'),
     path('education/school', education.school_news, name='school'),
     path('education/exam', education.exam_news, name='seachquery'),
+    path('education/campus', education.campus_news, name='campus'),
 ]
