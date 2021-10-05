@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from . import education
 from . import businessnews
 from newsapp.trending import trending
 urlpatterns = [
@@ -13,4 +14,7 @@ urlpatterns = [
     path('business/market', businessnews.business_market, name='businessmarket'),
     path('business/entrepreneurship', businessnews.entrepreneurship, name='entrepreneurship'),
     path('search/<str:pk>', views.seachquery, name='seachquery'),
+    path('education', views._news, name='news'),
+    path('education/school', views.school_news, name='school'),
+    path('education/exam', views.exam_news, name='seachquery'),
 ]
