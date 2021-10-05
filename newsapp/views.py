@@ -132,3 +132,26 @@ def latestSportsnews(request):
             image.append("https://th.bing.com/th/id/OIP.Bog_Pg2r3w4-dm6LBjQT-gHaFu?w=230&h=180&c=7&r=0&o=5&pid=1.7")
     x = [{'news': a, 'image': s, 'link': t} for a, s, t in zip(news, image, link)]
     return JsonResponse(x, safe=False)
+
+@api_view(['GET'])
+def seachquery(request, pk):
+    URL ="https://news.google.com/search?q="+pk+"&hl=en-IN&gl=IN&ceid=IN%3Aen"
+    page = requests.get(URL)
+    soup = BeautifulSoup(page.content, "html.parser")
+    results = soup.find(class_="lBwEZb BL5WZb xP6mwf")
+    elements = results.find_all("div", class_="NiLAwe y6IFtc R7GTQ keNKEd j7vNaf nID9nc")
+    news = []
+    link = []
+    image = []
+    for j in elements:
+        news.append(j.find("h3").text)
+        link1 = j.find("a")['href']
+        link1 = "https://news.google.com" + link1[1:]
+        link.append(link1)
+        try:
+            image.append(j.find("img", class_="tvs3Id QwxBBf")["src"])
+        except:
+            image.append("https://th.bing.com/th/id/OIP.Bog_Pg2r3w4-dm6LBjQT-gHaFu?w=230&h=180&c=7&r=0&o=5&pid=1.7")
+
+    x = [{'news': a, 'image': s, 'link': t} for a, s, t in zip(news, image, link)]
+    return JsonResponse(x, safe=False)
