@@ -14,7 +14,7 @@ urlpatterns = [
     path('business/market', businessnews.business_market, name='businessmarket'),
     path('business/entrepreneurship', businessnews.entrepreneurship, name='entrepreneurship'),
     path('search/<str:pk>', views.seachquery, name='seachquery'),
-    path('education', views._news, name='news'),
-    path('education/school', views.school_news, name='school'),
-    path('education/exam', views.exam_news, name='seachquery'),
+    path('education', education._news, name='news'),
+    path('education/school', education.school_news, name='school'),
+    path('education/exam', education.exam_news, name='seachquery'),
 ]
