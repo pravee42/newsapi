@@ -37,3 +37,9 @@ def getBookmark(request, pk):
     data = UserBookmarks.objects.filter(email = pk)
     serializer = Bookmarkserializer(data, many=True)
     return JsonResponse(serializer.data, safe=False)
+
+@api_view(['DELETE'])
+def deletebookmark(request, pk):
+    data = UserBookmarks.objects.get(id=pk)
+    data.delete()
+    return Response("User Deleted")
