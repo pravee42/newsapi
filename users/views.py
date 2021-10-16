@@ -21,7 +21,7 @@ def createuser(email, password, avatar, name):
         serializer.save()
     else:
         print(request.data)
-    return JsonResponse(serializer.data, safe=False)
+    return Response(serializer.data, safe=False)
 
 @api_view(['POST'])
 def loginuser(request):
