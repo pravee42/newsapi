@@ -36,7 +36,4 @@ def bookmark(request):
 def getBookmark(request, pk):
     data = UserBookmarks.objects.filter(email = pk)
     serializer = Bookmarkserializer(data, many=True)
-    if serializer.is_valid():
-        return JsonResponse(serializer.data, safe=False)
-    else:
-        return JsonResponse("No bookmarks found", safe=False)
+    return JsonResponse(serializer.data, safe=False)
