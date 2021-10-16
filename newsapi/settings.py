@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'newsapp',
     'rest_framework',
     'corsheaders',
-    'users'
+    'users',
+    'bookmarks'
 ]
 
 MIDDLEWARE = [
