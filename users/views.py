@@ -9,7 +9,7 @@ from .serializers import *
 from datetime import datetime, timedelta
 
 
-def createuser(email, name, password, avatar):
+def createuser(email, password, avatar, name):
     request = {
         'email' : email,
         'name' : name,
@@ -29,9 +29,10 @@ def loginuser(request):
     password = request.data.get('password')
     url = request.data.get("avatar")
     name = request.data.get("name")
-    if UserField.objects.filter(username=username).exists() and UserField.objects.filter(password=password):
+    if UserDetails.objects.filter(email=email).exists() and UserDetails.objects.filter(password=password):
         response_data = {
-            'token': password
+            'token': password,
+            'avatar': url
         }
         return Response(response_data)
     else:
