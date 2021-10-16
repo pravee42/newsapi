@@ -31,3 +31,12 @@ def bookmark(request):
     else:
         print("Error Creating bookmarkS")
     return Response("")
+
+@api_view(['GET'])
+def getBookmark(request, pk):
+    data = UserBookmarks.objects.filter(email = pk)
+    serializer = Bookmarkserializer(data, many=True)
+    if serializer.is_valid():
+        return JsonResponse(serializer.data, safe=False)
+    else:
+        return JsonResponse("No bookmarks found", safe=False)

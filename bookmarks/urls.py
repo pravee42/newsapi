@@ -4,5 +4,6 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    path('', views.bookmark, name="login")
+    path('', views.bookmark, name="book"),
+    path('/get/<str:pk>', views.getBookmark, name="get")
 ]
