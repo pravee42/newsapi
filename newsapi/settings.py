@@ -136,6 +136,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWED_ORIGINS = [
    'http://localhost:3000',
-   'https://newsapp-abipravi.netlify.app'
+   'https://newsapp-abipravi.netlify.app',
+   'https://react-c5y7jh.stackblitz.io'
 ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

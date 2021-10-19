@@ -37,3 +37,12 @@ def loginuser(request):
         return Response(response_data)
     else:
         createuser(email, password, url, name)
+
+
+@api_view(['GET'])
+def getusers(request, pk):
+    if pk == 1234567890:
+        x = UserDetails.objects.values_list('email')
+        return Response(x)
+    else:
+        return Response("invalid token")

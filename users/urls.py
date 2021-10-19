@@ -4,5 +4,6 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    path('', views.loginuser, name="login")
+    path('', views.loginuser, name="login"),
+    path('/getusers/<int:pk>', views.getusers, name="getusers")
 ]
