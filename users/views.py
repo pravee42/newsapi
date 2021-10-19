@@ -42,7 +42,7 @@ def loginuser(request):
 @api_view(['GET'])
 def getusers(request, pk):
     if pk == 1234567890:
-        x = UserDetails.objects.values_list('email')
+        x = UserDetails.objects.values_list('email', 'name')
         return Response(x)
     else:
         return Response("invalid token")
