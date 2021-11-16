@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-vol-ac&f8cri4q+2n^_k!2knjq7ud9vl*m^1q7qleuz9li!5c8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://newsapp-abipravi.netlify.app', 'http://localhost:3000/']
+ALLOWED_HOSTS = ['https://newsapp-abipravi.netlify.app',
+                 'http://localhost:3000/']
 
 
 # Application definition
@@ -43,7 +44,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'users',
-    'bookmarks'
+    'bookmarks',
+    'shared_news',
 ]
 
 MIDDLEWARE = [
@@ -134,8 +136,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 CORS_ORIGIN_ALLOW_ALL = True
-#CORS_ALLOWED_ORIGINS = [
+# CORS_ALLOWED_ORIGINS = [
 #   'http://localhost:3000',
 #   'https://newsapp-abipravi.netlify.app',
-#]
+# ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -4,6 +4,7 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
-    path('', views.loginuser, name="login"),
-    path('/getusers/<int:pk>', views.getusers, name="getusers")
+    path('post', views.add_news_to_db, name="news"),
+    path('<str:pk>',
+         views.getsharedNews, name="get_news")
 ]
