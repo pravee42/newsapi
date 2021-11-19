@@ -20,6 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('newsapp.urls')),
     path('auth', include('users.urls')),
-    path('bookmark', include('bookmarks.urls')),
+    path('bookmark/', include('bookmarks.urls')),
     path('share/', include('shared_news.urls'))
 ]
