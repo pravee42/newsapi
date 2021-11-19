@@ -20,11 +20,11 @@ def add_news_to_db(request):
         "source": source,
         "image": image
     }
-    print(data1)
     serializer = SharedNewsserializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-        return Response(data1)
+        print(serializer.data)
+        return Response(serializer.data)
     else:
         print(serializer)
 
