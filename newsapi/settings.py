@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-vol-ac&f8cri4q+2n^_k!2knjq7ud9vl*m^1q7qleuz9li!5c8
 DEBUG = True
 
 ALLOWED_HOSTS = ['https://newsapp-abipravi.netlify.app',
-                 'http://localhost:3000/']
+                'http://localhost:3000/', 'http://localhost:3000']
 
 
 # Application definition
