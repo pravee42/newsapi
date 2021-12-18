@@ -9,19 +9,28 @@ from .serializers import *
 from datetime import datetime, timedelta
 
 
-def createuser(email, password, avatar, name):
-    request = {
-        'email' : email,
-        'name' : name,
-        "password" : password,
-        "avatar" : avatar
-    }
-    serializer = UserDetailserializers(data=request)
-    if serializer.is_valid():
-        serializer.save()
+@api_view(['POST'])
+def createuser(request):
+    email = request.data.get('email')
+    password = request.data.get('password')
+    url = request.data.get("avatar")
+    name = request.data.get("name")
+    if UserDetails.objects.filter(email=email).exists() and UserDetails.objects.filter(password=password):
+        return Response({"Restult": "User Already Exists"})
     else:
-        print(request.data)
-    return Response(serializer.data)
+        request = {
+            'email': email,
+            'name': name,
+            "password": password,
+            "avatar": url
+        }
+        serializer = UserDetailserializers(data=request)
+        if serializer.is_valid():
+            serializer.save()
+        else:
+            print(request.data)
+        return Response(serializer.data)
+
 
 @api_view(['POST'])
 def loginuser(request):
@@ -36,7 +45,7 @@ def loginuser(request):
         }
         return Response(response_data)
     else:
-        createuser(email, password, url, name)
+        return Response({"Result": "Register To login"})
 
 
 @api_view(['GET'])
