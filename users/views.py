@@ -16,7 +16,8 @@ def createuser(request):
     url = request.data.get("avatar")
     name = request.data.get("name")
     if UserDetails.objects.filter(email=email).exists() and UserDetails.objects.filter(password=password):
-        return Response({"Restult": "User Already Exists"})
+        pass
+        # print({"Restult": "User Already Exists"})
     else:
         request = {
             'email': email,
@@ -44,8 +45,6 @@ def loginuser(request):
             'avatar': url
         }
         return Response(response_data)
-    else:
-        return Response({"Result": "Register To login"})
 
 
 @api_view(['GET'])

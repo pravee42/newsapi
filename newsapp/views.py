@@ -11,6 +11,7 @@ import string
 from datetime import datetime, timedelta
 # Create your views here.
 
+
 @api_view(['GET'])
 def UserInfo(request):
     userInfo = '''
@@ -19,7 +20,7 @@ def UserInfo(request):
     Creator: Praveen Kumar
     About: This api collects news from websites and display as a api
     '''
-    docs ='''
+    docs = '''
     Docs: Currently This api give only general news of india and Tech news 
     /news -> News [India]
     /tech -> Tech news
@@ -37,7 +38,7 @@ def getEnglishnews(request):
     shotnews = []
     image = []
     link = []
-    for i in range(0, 15):
+    for i in range(0, 5):
         URL = "https://www.indiatoday.in/india/?page=" + str(i)
         page = requests.get(URL)
         soup = BeautifulSoup(page.content, "html.parser")
@@ -54,15 +55,18 @@ def getEnglishnews(request):
                 if location_element == "":
                     techlink.append("none")
                 else:
-                    link1 = 'https://www.indiatoday.in' + location_element['href']
+                    link1 = 'https://www.indiatoday.in' + \
+                        location_element['href']
                     link.append(link1)
             if job_element.find("p"):
                 location_element = job_element.find("p")
                 l1 = location_element.text.strip()
                 location_element = l1
                 shotnews.append(location_element)
-    x = [{'news': a, 'image': s, 'link': t, 'shortnews': l} for a, s, t, l in zip(news, image, link, shotnews)]
+    x = [{'news': a, 'image': s, 'link': t, 'shortnews': l}
+         for a, s, t, l in zip(news, image, link, shotnews)]
     return JsonResponse(x, safe=False)
+
 
 @api_view(['GET'])
 def getTechnews(request):
@@ -86,10 +90,13 @@ def getTechnews(request):
                 if location_element == "":
                     techlink.append("none")
                 else:
-                    link = 'https://www.indiatoday.in' + location_element['href']
+                    link = 'https://www.indiatoday.in' + \
+                        location_element['href']
                     techlink.append(link)
-    x = [{'news': name, 'image': image, 'link': link} for name, image, link in zip(tech, tech_image, techlink)]
+    x = [{'news': name, 'image': image, 'link': link}
+         for name, image, link in zip(tech, tech_image, techlink)]
     return JsonResponse(x, safe=False)
+
 
 @api_view(['GET'])
 def getSportsNews(request):
@@ -97,7 +104,8 @@ def getSportsNews(request):
     page = requests.get(URL)
     soup = BeautifulSoup(page.content, "html.parser")
     results = soup.find(class_="lBwEZb BL5WZb xP6mwf")
-    elements = results.find_all("div", class_="NiLAwe y6IFtc R7GTQ keNKEd j7vNaf nID9nc")
+    elements = results.find_all(
+        "div", class_="NiLAwe y6IFtc R7GTQ keNKEd j7vNaf nID9nc")
     news = []
     link = []
     image = []
@@ -107,7 +115,8 @@ def getSportsNews(request):
         link1 = "https://news.google.com" + link1[1:]
         link.append(link1)
         image.append(j.find("img", class_="tvs3Id QwxBBf")["src"])
-    x = [{'news': a, 'image': s, 'link': t} for a, s, t in zip(news, image, link)]
+    x = [{'news': a, 'image': s, 'link': t}
+         for a, s, t in zip(news, image, link)]
     return JsonResponse(x, safe=False)
 
 
@@ -117,7 +126,8 @@ def latestSportsnews(request):
     page = requests.get(URL)
     soup = BeautifulSoup(page.content, "html.parser")
     results = soup.find(class_="lBwEZb BL5WZb GndZbb")
-    elements = results.find_all("div", class_="xrnccd F6Welf R7GTQ keNKEd j7vNaf")
+    elements = results.find_all(
+        "div", class_="xrnccd F6Welf R7GTQ keNKEd j7vNaf")
     news = []
     link = []
     image = []
@@ -129,17 +139,21 @@ def latestSportsnews(request):
         try:
             image.append(j.find("img", class_="tvs3Id QwxBBf")["src"])
         except:
-            image.append("https://th.bing.com/th/id/OIP.Bog_Pg2r3w4-dm6LBjQT-gHaFu?w=230&h=180&c=7&r=0&o=5&pid=1.7")
-    x = [{'news': a, 'image': s, 'link': t} for a, s, t in zip(news, image, link)]
+            image.append(
+                "https://th.bing.com/th/id/OIP.Bog_Pg2r3w4-dm6LBjQT-gHaFu?w=230&h=180&c=7&r=0&o=5&pid=1.7")
+    x = [{'news': a, 'image': s, 'link': t}
+         for a, s, t in zip(news, image, link)]
     return JsonResponse(x, safe=False)
+
 
 @api_view(['GET'])
 def seachquery(request, pk):
-    URL ="https://news.google.com/search?q="+pk+"&hl=en-IN&gl=IN&ceid=IN%3Aen"
+    URL = "https://news.google.com/search?q="+pk+"&hl=en-IN&gl=IN&ceid=IN%3Aen"
     page = requests.get(URL)
     soup = BeautifulSoup(page.content, "html.parser")
     results = soup.find(class_="lBwEZb BL5WZb xP6mwf")
-    elements = results.find_all("div", class_="NiLAwe y6IFtc R7GTQ keNKEd j7vNaf nID9nc")
+    elements = results.find_all(
+        "div", class_="NiLAwe y6IFtc R7GTQ keNKEd j7vNaf nID9nc")
     news = []
     link = []
     image = []
@@ -151,7 +165,9 @@ def seachquery(request, pk):
         try:
             image.append(j.find("img", class_="tvs3Id QwxBBf")["src"])
         except:
-            image.append("https://th.bing.com/th/id/OIP.Bog_Pg2r3w4-dm6LBjQT-gHaFu?w=230&h=180&c=7&r=0&o=5&pid=1.7")
+            image.append(
+                "https://th.bing.com/th/id/OIP.Bog_Pg2r3w4-dm6LBjQT-gHaFu?w=230&h=180&c=7&r=0&o=5&pid=1.7")
 
-    x = [{'news': a, 'image': s, 'link': t} for a, s, t in zip(news, image, link)]
+    x = [{'news': a, 'image': s, 'link': t}
+         for a, s, t in zip(news, image, link)]
     return JsonResponse(x, safe=False)
