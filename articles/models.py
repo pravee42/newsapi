@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-class Atricles(models.Model):
+class Articles(models.Model):
     author = models.CharField(max_length=300)
     published_date = models.DateField(auto_now_add=True)
     votes = models.IntegerField()
