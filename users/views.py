@@ -41,7 +41,6 @@ def loginuser(request):
     if UserDetails.objects.filter(email=email).exists() and UserDetails.objects.filter(password=password):
         response_data = {
             'token': password,
-            'avatar': url
         }
         return Response(response_data)
 
