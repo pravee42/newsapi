@@ -37,7 +37,6 @@ def createuser(request):
 def loginuser(request):
     email = request.data.get('email')
     password = request.data.get('password')
-    url = request.data.get("avatar")
     name = request.data.get("name")
     if UserDetails.objects.filter(email=email).exists() and UserDetails.objects.filter(password=password):
         response_data = {
