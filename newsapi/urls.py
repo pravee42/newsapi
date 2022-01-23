@@ -21,5 +21,6 @@ urlpatterns = [
     path('', include('newsapp.urls')),
     path('auth', include('users.urls')),
     path('bookmark/', include('bookmarks.urls')),
-    path('share/', include('shared_news.urls'))
+    path('share/', include('shared_news.urls')),
+    path('articles/', include('articles.urls'))
 ]

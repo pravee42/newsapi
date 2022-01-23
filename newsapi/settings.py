@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'users',
     'bookmarks',
     'shared_news',
+    'articles'
 ]
 
 MIDDLEWARE = [
