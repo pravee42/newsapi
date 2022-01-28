@@ -63,7 +63,8 @@ def getEnglishnews(request):
                 if location_element == "":
                     techlink.append("none")
                 else:
-                    link1 = "https://www.indiatoday.in" + location_element["href"]
+                    link1 = "https://www.indiatoday.in" + \
+                        location_element["href"]
                     link.append(link1)
             if job_element.find("p"):
                 location_element = job_element.find("p")
@@ -99,7 +100,8 @@ def getTechnews(request):
                 if location_element == "":
                     techlink.append("none")
                 else:
-                    link = "https://www.indiatoday.in" + location_element["href"]
+                    link = "https://www.indiatoday.in" + \
+                        location_element["href"]
                     techlink.append(link)
     x = [
         {"news": name, "image": image, "link": link}
@@ -126,7 +128,8 @@ def getSportsNews(request):
         link1 = "https://news.google.com" + link1[1:]
         link.append(link1)
         image.append(j.find("img", class_="tvs3Id QwxBBf")["src"])
-    x = [{"news": a, "image": s, "link": t} for a, s, t in zip(news, image, link)]
+    x = [{"news": a, "image": s, "link": t}
+         for a, s, t in zip(news, image, link)]
     return JsonResponse(x, safe=False)
 
 
@@ -136,7 +139,8 @@ def latestSportsnews(request):
     page = requests.get(URL)
     soup = BeautifulSoup(page.content, "html.parser")
     results = soup.find(class_="lBwEZb BL5WZb GndZbb")
-    elements = results.find_all("div", class_="xrnccd F6Welf R7GTQ keNKEd j7vNaf")
+    elements = results.find_all(
+        "div", class_="xrnccd F6Welf R7GTQ keNKEd j7vNaf")
     news = []
     link = []
     image = []
@@ -151,7 +155,8 @@ def latestSportsnews(request):
             image.append(
                 "https://th.bing.com/th/id/OIP.Bog_Pg2r3w4-dm6LBjQT-gHaFu?w=230&h=180&c=7&r=0&o=5&pid=1.7"
             )
-    x = [{"news": a, "image": s, "link": t} for a, s, t in zip(news, image, link)]
+    x = [{"news": a, "image": s, "link": t}
+         for a, s, t in zip(news, image, link)]
     return JsonResponse(x, safe=False)
 
 
@@ -179,5 +184,6 @@ def seachquery(request, pk):
                 "https://th.bing.com/th/id/OIP.Bog_Pg2r3w4-dm6LBjQT-gHaFu?w=230&h=180&c=7&r=0&o=5&pid=1.7"
             )
 
-    x = [{"news": a, "image": s, "link": t} for a, s, t in zip(news, image, link)]
+    x = [{"news": a, "image": s, "link": t}
+         for a, s, t in zip(news, image, link)]
     return JsonResponse(x, safe=False)
