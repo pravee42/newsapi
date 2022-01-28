@@ -9,7 +9,7 @@ class Articles(models.Model):
     votes = models.IntegerField()
     title = models.CharField(max_length=500)
     article = models.CharField(max_length=10000)
-    creater_email = models.CharField(max_length=100, default=None, null=True)
+    creater_email = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.title
