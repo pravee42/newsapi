@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Articles, Comments, AuthorArticles
+from .models import Articles, Comments, Authorarticles
 
 
 class ArticlesSerializers(serializers.ModelSerializer):
@@ -16,5 +16,5 @@ class CommentsSerializer(serializers.ModelSerializer):
 
 class AuthorArticlesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = AuthorArticles
+        model = Authorarticles
         fields = '__all__'

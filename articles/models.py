@@ -1,4 +1,5 @@
 from django.db import models
+import sys
 
 # Create your models here.
 
@@ -25,8 +26,8 @@ class Comments(models.Model):
         return self.user
 
 
-class AuthorArticles(models.Model):
-    creator_email = models.CharField(max_length=100)
+class Authorarticles(models.Model):
+    creator_email = models.CharField(max_length=sys.maxsize)
     articleid = models.IntegerField()
 
     def __str__(self):
