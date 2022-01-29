@@ -112,6 +112,6 @@ def saveAuthor(articleid, email):
 
 @api_view(['GET'])
 def getAuthor(request,pk):
-    authordata = AuthorArticles.objects.filter(id=pk)
+    authordata = AuthorArticles.objects.filter(articleid=pk)
     authordataserializer = AuthorArticlesSerializer(authordata, many=True)
     return Response(authordataserializer.data)
