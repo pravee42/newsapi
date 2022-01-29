@@ -3,6 +3,7 @@ from .serializers import *
 from django.http import Http404
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.decorators import api_view
 from rest_framework import status
 
 
@@ -10,13 +11,7 @@ class ArticlesClass(APIView):
     def get(self, request, format=None):
         snippets = Articles.objects.all()
         serializer = ArticlesSerializers(snippets, many=True)
-        authordata = AuthorArticles.objects.all()
-        authordataserializer = AuthorArticlesSerializer(authordata, many=True)
-        data = {
-            'atricles': serializer.data,
-            'author': authordataserializer.data
-        }
-        return Response(data)
+        return Response(serializer.data)
 
     def post(self, request, format=None):
         email = request.data.get('email')
@@ -114,3 +109,9 @@ def saveAuthor(articleid, email):
     if serializer.is_valid():
         serializer.save()
         return data
+
+@api_view(['GET'])
+def getAuthor(request,pk):
+    authordata = AuthorArticles.objects.filter(id=pk)
+    authordataserializer = AuthorArticlesSerializer(authordata, many=True)
+    return Response(authordataserializer.data)
