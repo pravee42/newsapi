@@ -27,7 +27,7 @@ class Comments(models.Model):
 
 
 class Authorarticles(models.Model):
-    creator_email = models.CharField(max_length=sys.maxsize)
+    creator_email = models.CharField(max_length=1000)
     articleid = models.IntegerField()
 
     def __str__(self):
