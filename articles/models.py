@@ -30,4 +30,4 @@ class AuthorArticles(models.Model):
     articleid = models.IntegerField()
 
     def __str__(self):
-        return self.creator_email
+        return self.articleid
