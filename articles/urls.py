@@ -7,5 +7,4 @@ urlpatterns = [
     path('<int:pk>/', views.ArticlesDetail.as_view()),
     path('comments/', views.CommentsClass.as_view()),
     path('comments/<int:pk>/', views.CommentsDetail.as_view()),
-    path('author/get/<int:pk>/', views.getAuthor),
 ]

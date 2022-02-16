@@ -10,6 +10,7 @@ class Articles(models.Model):
     votes = models.IntegerField()
     title = models.CharField(max_length=500)
     article = models.CharField(max_length=10000)
+    creator_email = models.CharField(max_length=300, default=None)
 
     def __str__(self):
         return self.title
@@ -24,11 +25,3 @@ class Comments(models.Model):
 
     def __str__(self):
         return self.user
-
-
-class Authorarticles(models.Model):
-    creator_email = models.CharField(max_length=1000)
-    articleid = models.IntegerField()
-
-    def __str__(self):
-        return self.articleid

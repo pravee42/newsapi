@@ -20,7 +20,7 @@ class ArticlesClass(APIView):
             "published_date": request.data.get('published_date'),
             "votes": request.data.get('votes'),
             "title": request.data.get('title'),
-            "article": request.data.get('article')
+            "article": request.data.get('article'),
         }
         print(data)
         serializer = ArticlesSerializers(data=data)
@@ -101,18 +101,3 @@ class CommentsDetail(APIView):
         snippet = self.get_object(pk)
         snippet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-def saveAuthor(articleid, email):
-    data = {'creator_email': email, 'articleid': articleid}
-    serializer = AuthorArticlesSerializer(data=data)
-    if serializer.is_valid():
-        serializer.save()
-        return data
-
-
-@api_view(['GET'])
-def getAuthor(request, pk):
-    authordata = Authorarticles.objects.filter(articleid=pk)
-    authordataserializer = AuthorArticlesSerializer(authordata, many=True)
-    return Response(authordataserializer.data)
