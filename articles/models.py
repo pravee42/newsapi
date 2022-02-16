@@ -8,7 +8,7 @@ class Articles(models.Model):
     author = models.CharField(max_length=300)
     published_date = models.DateField(auto_now_add=True)
     votes = models.IntegerField()
-    title = models.CharField(max_length=500)
+    title = models.CharField(max_length=10000)
     article = models.CharField(max_length=10000)
     creator_email = models.CharField(max_length=300, default=None)
 

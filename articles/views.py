@@ -26,7 +26,6 @@ class ArticlesClass(APIView):
         serializer = ArticlesSerializers(data=data)
         if serializer.is_valid():
             serializer.save()
-            saveAuthor(serializer.data.get('id'), email)
             # print(serializer.data, "serializer data")
             # print(serializer.data.get('id'), "serializer id")
             return Response(serializer.data, status=status.HTTP_201_CREATED)
