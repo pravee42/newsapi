@@ -22,5 +22,6 @@ urlpatterns = [
     path('auth', include('users.urls')),
     path('bookmark/', include('bookmarks.urls')),
     path('share/', include('shared_news.urls')),
+    path('twitter/', include('twittergrap.urls')),
     path('articles/', include('articles.urls'))
 ]
